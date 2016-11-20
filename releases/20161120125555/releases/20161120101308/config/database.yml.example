@@ -1,0 +1,21 @@
+default: &default
+  adapter: mysql2
+  encoding: utf8
+  pool: 5
+  username: root
+  password:
+  socket: /var/run/mysqld/mysqld.sock
+
+development:
+  <<: *default
+  database: auto_rails_development
+
+test:
+  <<: *default
+  database: auto_rails_test
+
+production:
+  <<: *default
+  database: auto_rails_production
+  username: auto_rails
+  password: <%= ENV["FAQ_DATABASE_PASSWORD"] %>
